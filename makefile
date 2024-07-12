@@ -12,7 +12,7 @@
 
 NAME = push_swap
 
-CC = cc
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g -Iheaders/
 RM = rm -rf
 
@@ -22,7 +22,7 @@ LIBFT = libft/libft.a
 SRCS = 	main.c\
 		commands/swap.c commands/push.c commands/rotate.c commands/reverse_rotate.c\
 		utils/error.c utils/stack_functions.c utils/find.c\
-		algorithm/push_swap.c
+		algorithm/push_swap.c algorithm/small_sort.c algorithm/set_values.c
 		
 OBJS = $(SRCS:%.c=%.o)
 

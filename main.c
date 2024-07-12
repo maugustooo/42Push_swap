@@ -43,12 +43,12 @@ int main(int argc, char **argv)
 	else
 		args = argv + 1;
     fill_stack(args, &a);
-	// t_stack *current = a;
-  	// printf("\n\nA\n");
-    // while (current != NULL) {
-    //     printf("%d\n", current->number);
-    //     current = current->next;
-    // }
+	t_stack *current = a;
+  	printf("\n\nA\n");
+    while (current != NULL) {
+        printf("%d\n", current->number);
+        current = current->next;
+    }
 	if(!sorted(a))
 	{
 		if(ft_stacksize(a) == 2)
@@ -58,11 +58,11 @@ int main(int argc, char **argv)
 		else
 			push_swap(&a, &b);
 	}
-	// current = a;
-  	// printf("\n\nA\n");
-    // while (current != NULL) 
-	// {
-    //     printf("%d\n", current->number);
-    //     current = current->next;
-    // }
+	current = a;
+  	printf("\n\nA\n");
+    while (current != NULL) 
+	{
+        printf("%d\n", current->number);
+        current = current->next;
+    }
 }

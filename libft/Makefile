@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror -fPIC
 RM = rm -rf
 NAME = libft.a

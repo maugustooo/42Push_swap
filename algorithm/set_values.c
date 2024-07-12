@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-static void set_pos(t_stack *stack)
+void set_pos(t_stack *stack)
 {
 	int i;
 	int half;
