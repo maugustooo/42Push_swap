@@ -56,8 +56,15 @@ void rrr(t_stack **a, t_stack **b);
 
 void push_swap(t_stack **a, t_stack **b);
 
-void set_pos(t_stack *stack);
-void set_values(t_stack **a, t_stack **b);
+void set_pos_half(t_stack *stack);
+void set_values(t_stack *a, t_stack *b);
 
 void sort_three(t_stack **a);
+
+
+
+
+
+
+void print_stack(t_stack *stack, char stack_name);
 #endif

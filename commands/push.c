@@ -8,7 +8,7 @@ static void push(t_stack **src, t_stack **dest)
 	*src = (*src)->next;
 	if(*src)
 		(*src)->prev = NULL;
-	node -> next = NULL;
+	node -> prev = NULL;
 	if(*dest == NULL)
 	{
 		*dest = node;
@@ -16,8 +16,8 @@ static void push(t_stack **src, t_stack **dest)
 	}
 	else
 	{
-		node ->next = *dest;
-		node ->next->prev = NULL;
+		node->next = *dest;
+		node->next->prev = node;
 		*dest = node;
 	}
 }

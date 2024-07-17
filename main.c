@@ -1,10 +1,20 @@
 #include "push_swap.h"
 
+void print_stack(t_stack *stack, char stack_name) 
+{
+    printf("\n\n%c\n", stack_name);
+    t_stack *current = stack;
+    while (current != NULL) 
+	{
+        printf("%d\n", current->number);
+        current = current->next;
+    }
+}
+
 static int sorted(t_stack *stack)
 {
 	while (stack->next)
 	{
-		ft_printf("%d", stack->number);
 		if(stack->number > stack->next->number)
 			return(FALSE);
 		stack = stack->next;
@@ -43,12 +53,8 @@ int main(int argc, char **argv)
 	else
 		args = argv + 1;
     fill_stack(args, &a);
-	t_stack *current = a;
-  	printf("\n\nA\n");
-    while (current != NULL) {
-        printf("%d\n", current->number);
-        current = current->next;
-    }
+	// print_stack(a, 'A');
+    // print_stack(b, 'B');
 	if(!sorted(a))
 	{
 		if(ft_stacksize(a) == 2)
@@ -58,11 +64,6 @@ int main(int argc, char **argv)
 		else
 			push_swap(&a, &b);
 	}
-	current = a;
-  	printf("\n\nA\n");
-    while (current != NULL) 
-	{
-        printf("%d\n", current->number);
-        current = current->next;
-    }
+	// print_stack(a, 'A');
+    // print_stack(b, 'B');
 }
