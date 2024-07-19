@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_functions.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/19 14:58:31 by maugusto          #+#    #+#             */
+/*   Updated: 2024/07/19 15:13:46 by maugusto         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
-t_stack	*ft_stacknew(int nbr)
+t_stack	*ft_newnode(int nbr)
 {
 	t_stack	*stack;
 
@@ -12,6 +24,7 @@ t_stack	*ft_stacknew(int nbr)
 	stack->prev = NULL;
 	return (stack);
 }
+
 t_stack	*ft_stacklast(t_stack *stack)
 {
 	t_stack	*last;
@@ -23,6 +36,7 @@ t_stack	*ft_stacklast(t_stack *stack)
 		last = last->next;
 	return (last);
 }
+
 void	ft_stackadd_back(t_stack **stack, t_stack *new)
 {
 	t_stack	*last;
@@ -39,6 +53,7 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new)
 			*stack = new;
 	}
 }
+
 int	ft_stacksize(t_stack *stack)
 {
 	t_stack	*node;
@@ -49,18 +64,18 @@ int	ft_stacksize(t_stack *stack)
 	while (node)
 	{
 		i++;
-		node = node -> next;
+		node = node->next;
 	}
 	return (i);
 }
 
-t_stack *get_cheapest(t_stack *b)
+t_stack	*get_cheapest(t_stack *b)
 {
 	while (b)
 	{
-		if((b->cheapest = TRUE))
-			return(b);
+		if (b->cheapest == TRUE)
+			return (b);
 		b = b->next;
 	}
-	return(NULL);
+	return (NULL);
 }

@@ -1,72 +1,84 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set_values.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/19 14:58:55 by maugusto          #+#    #+#             */
+/*   Updated: 2024/07/19 15:21:01 by maugusto         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
-static void set_pos(t_stack *stack)
+void	set_pos(t_stack *stack)
 {
-	int i;
-	int half;
+	int	i;
+	int	half;
 
 	half = ft_stacksize(stack) / 2;
 	i = 0;
 	while (stack)
 	{
-		stack->current_pos = i++;
-		if(stack->current_pos <= half)
+		stack->current_pos = i;
+		if (i <= half)
 			stack->half = ABOVE;
-		else if (stack->current_pos > half)
+		else
 			stack->half = BELOW;
 		stack = stack->next;
+		++i;
 	}
-	
 }
 
-static void set_target(t_stack *a, t_stack *b)
+static void	set_target(t_stack *a, t_stack *b)
 {
-	int best_value;
-	t_stack *target_node;
+	int		best_value;
+	t_stack	*target_node;
+	t_stack	*current;
 
-	best_value = INT_MAX;
 	while (b)
 	{
-		while (a)
+		best_value = INT_MAX;
+		current = a;
+		while (current)
 		{
-			if(a->number > b->number && a->number < best_value)
+			if (current->number > b->number && current->number < best_value)
 			{
-				target_node = a;
-				best_value = b->number;
+				best_value = current->number;
+				target_node = current;
 			}
-			a = a->next;
+			current = current->next;
 		}
-		if(best_value == INT_MAX)
+		if (best_value == INT_MAX)
 			b->target = find_the_small_one(a);
-		else 
+		else
 			b->target = target_node;
-		ft_printf("target do %d: %d", b->number, b->target->number);
 		b = b->next;
 	}
-	
 }
 
-static void set_price(t_stack *a, t_stack *b)
+static void	set_price(t_stack *a, t_stack *b)
 {
-	int len_a;
-	int len_b;
+	int	len_a;
+	int	len_b;
 
 	len_a = ft_stacksize(a);
 	len_b = ft_stacksize(b);
 	while (b)
 	{
 		b->price = b->current_pos;
-		if(b->half == BELOW)
+		if (b->half == BELOW)
 			b->price = len_b - b->current_pos;
-		if(b->target->half == BELOW)
-			b->price += len_a - b->target->current_pos;
-		else
+		if (b->target->half == ABOVE)
 			b->price += b->target->current_pos;
+		else
+			b->price += len_a - b->target->current_pos;
 		b = b->next;
 	}
 }
 
-void set_values(t_stack **a, t_stack **b)
+void	set_values(t_stack **a, t_stack **b)
 {
 	set_pos(*a);
 	set_pos(*b);

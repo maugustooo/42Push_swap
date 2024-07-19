@@ -1,47 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   freedom.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/19 14:58:53 by maugusto          #+#    #+#             */
-/*   Updated: 2024/07/19 15:16:36 by maugusto         ###   ########.fr       */
+/*   Created: 2024/07/19 14:58:40 by maugusto          #+#    #+#             */
+/*   Updated: 2024/07/19 15:14:49 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	push(t_stack **src, t_stack **dest)
+void	free_stack(t_stack **stack)
 {
-	t_stack	*node;
+	t_stack	*tmp;
+	t_stack	*current;
 
-	node = *src;
-	*src = (*src)->next;
-	if (*src)
-		(*src)->prev = NULL;
-	node->prev = NULL;
-	if (*dest == NULL)
+	if (!stack || !*stack)
+		return ;
+	current = *stack;
+	while (current)
 	{
-		*dest = node;
-		node->next = NULL;
+		tmp = current->next;
+		free(current);
+		current = tmp;
 	}
-	else
-	{
-		node->next = *dest;
-		node->next->prev = node;
-		*dest = node;
-	}
+	*stack = NULL;
 }
 
-void	pa(t_stack **a, t_stack **b)
+void	free_argv(char **argv)
 {
-	push(b, a);
-	ft_printf("pa\n");
-}
+	int	i;
 
-void	pb(t_stack **a, t_stack **b)
-{
-	push(a, b);
-	ft_printf("pb\n");
+	i = -1;
+	if (!argv)
+		return ;
+	while (argv[++i])
+		free(argv[i]);
+	free(argv);
 }

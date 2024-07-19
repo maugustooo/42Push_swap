@@ -6,7 +6,7 @@
 #    By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/17 11:56:43 by maugusto          #+#    #+#              #
-#    Updated: 2024/07/11 14:28:52 by maugusto         ###   ########.fr        #
+#    Updated: 2024/07/19 14:36:13 by maugusto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ LIBFT = libft/libft.a
 
 SRCS = 	main.c\
 		commands/swap.c commands/push.c commands/rotate.c commands/reverse_rotate.c\
-		utils/error.c utils/stack_functions.c utils/find.c\
-		algorithm/push_swap.c algorithm/small_sort.c algorithm/set_values.c
+		utils/error_exit.c utils/stack_functions.c utils/find.c utils/freedom.c\
+		algorithm/push_swap.c  algorithm/set_values.c
 		
 OBJS = $(SRCS:%.c=%.o)
 
@@ -44,4 +44,13 @@ fclean: clean
 
 download:
 	@wget https://cdn.intra.42.fr/document/document/25705/checker_linux
+
+visualizer:
+	git clone https://github.com/o-reo/push_swap_visualizer.git && \
+	cd push_swap_visualizer && \
+	mkdir build && \
+	cd build && \
+	cmake .. && \
+	make && \
+	./bin/visualizer
 re: fclean all

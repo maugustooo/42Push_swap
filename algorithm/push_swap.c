@@ -1,59 +1,79 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/19 14:58:57 by maugusto          #+#    #+#             */
+/*   Updated: 2024/07/19 15:18:56 by maugusto         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
-void sort_2_or_3(t_stack **a)
+static void	sort_three(t_stack **a)
 {
-	t_stack *the_big_one;
+	t_stack	*the_big_one;
 
 	the_big_one = find_the_big_one(*a);
-	if(*a == the_big_one)
+	if (*a == the_big_one)
 		ra(a);
 	else if ((*a)->next == the_big_one)
 		rra(a);
-	if((*a)->number > (*a)->next->number)
+	if ((*a)->number > (*a)->next->number)
 		sa(a);
 }
 
-static int sorted(t_stack *stack)
+static int	sorted(t_stack **stack)
 {
-	while (stack->next)
+	t_stack	*current;
+
+	current = *stack;
+	while (current->next)
 	{
-		ft_printf("%d", stack->number);
-		if(stack->number > stack->next->number)
-			return(FALSE);
-		stack = stack->next;
+		if (current->number > current->next->number)
+			return (FALSE);
+		current = current->next;
 	}
-	if(ft_stacksize(stack) == 2)
-		sa(&stack);
-	else if (ft_stacksize(stack) == 3)
-		sort_three(&stack);
-	return(TRUE);
+	if (ft_stacksize(*stack) == 2)
+	{
+		sa(stack);
+		return (TRUE);
+	}
+	else if (ft_stacksize(*stack) == 3)
+	{
+		sort_three(stack);
+		return (TRUE);
+	}
+	return (TRUE);
 }
 
-static void rotate_until_top(t_stack **a, t_stack **b, t_stack *top_a,
-												t_stack *top_b)
+static void	rotate_until_top(t_stack **a, t_stack **b, t_stack *top_a,
+														t_stack *top_b)
 {
 	while (*a != top_a)
 	{
-		if(top_a->half == ABOVE)
+		if (top_a->half == ABOVE)
 			ra(a);
 		else
 			rra(a);
 	}
 	while (*b != top_b)
 	{
-		if(top_b->half == ABOVE)
+		if (top_b->half == ABOVE)
 			rb(b);
 		else
 			rrb(b);
 	}
 }
 
-static void moving (t_stack **a, t_stack **b)
+static void	moving(t_stack **a, t_stack **b)
 {
-	t_stack *cheapest;
+	t_stack	*cheapest;
 
 	cheapest = get_cheapest(*b);
-	if(cheapest->half == ABOVE && cheapest->target->half == ABOVE)
+	if (cheapest->half == ABOVE && cheapest->target->half == ABOVE)
 		rotate_both(a, b, cheapest);
 	else if (cheapest->half == BELOW && cheapest->target->half == BELOW)
 		reverse_rotate_both(a, b, cheapest);
@@ -61,14 +81,15 @@ static void moving (t_stack **a, t_stack **b)
 	pa(a, b);
 }
 
-void push_swap(t_stack **a, t_stack **b)
+void	push_swap(t_stack **a, t_stack **b)
 {
-	int len;
+	int		len;
+	t_stack	*the_small_one;
 
-	if(sorted(a))
+	if (sorted(a))
 		return ;
 	len = ft_stacksize(*a);
-	while (len -- > 3)
+	while (len-- > 3)
 		pb(a, b);
 	sort_three(a);
 	while (*b)
@@ -76,4 +97,12 @@ void push_swap(t_stack **a, t_stack **b)
 		set_values(a, b);
 		moving(a, b);
 	}
+	set_pos(*a);
+	the_small_one = find_the_small_one(*a);
+	if (the_small_one->half == ABOVE)
+		while (*a != the_small_one)
+			ra(a);
+	else
+		while (*a != the_small_one)
+			rra(a);
 }

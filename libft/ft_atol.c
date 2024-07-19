@@ -6,11 +6,11 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:58:06 by maugusto          #+#    #+#             */
-/*   Updated: 2024/07/09 15:48:50 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/07/19 15:24:08 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 long	ft_atol(const char *str)
 {
