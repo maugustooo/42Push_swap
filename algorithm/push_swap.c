@@ -1,92 +1,79 @@
 #include "../push_swap.h"
 
-void	finish_rotation(t_stack **stack,
-							t_stack *top_node,
-							char stack_name)
+void sort_2_or_3(t_stack **a)
 {
-	while (*stack != top_node)
-	{
-		if (stack_name == 'a')
-		{
-			if (top_node->half == ABOVE)
-				ra(stack);
-			else
-				rra(stack);
-		}
-		else if (stack_name == 'b')
-		{
-			if (top_node->half == ABOVE)
-				rb(stack);
-			else
-				rrb(stack);
-		}	
-	}
+	t_stack *the_big_one;
+
+	the_big_one = find_the_big_one(*a);
+	if(*a == the_big_one)
+		ra(a);
+	else if ((*a)->next == the_big_one)
+		rra(a);
+	if((*a)->number > (*a)->next->number)
+		sa(a);
 }
 
-t_stack *get_cheapest(t_stack *b)
+static int sorted(t_stack *stack)
 {
-	if (b == NULL)
-		return (NULL);
-	while (b)
+	while (stack->next)
 	{
-		if(b->cheapest == TRUE)
-			return(b);
-		b = b->next;
+		ft_printf("%d", stack->number);
+		if(stack->number > stack->next->number)
+			return(FALSE);
+		stack = stack->next;
 	}
-	return(NULL);
+	if(ft_stacksize(stack) == 2)
+		sa(&stack);
+	else if (ft_stacksize(stack) == 3)
+		sort_three(&stack);
+	return(TRUE);
 }
 
-static void rotate_both(t_stack **a, t_stack **b, t_stack *cheapest)
+static void rotate_until_top(t_stack **a, t_stack **b, t_stack *top_a,
+												t_stack *top_b)
 {
-	while (*a != cheapest->target && *b != cheapest)
-		rr(a, b);
-	set_pos_half(*a);
-	set_pos_half(*b);
-} 
-
-static void reverse_rotate_both(t_stack **a, t_stack **b, t_stack *cheapest)
-{
-	while (*a != cheapest->target && *b != cheapest)
-		rrr(a, b);
-	set_pos_half(*a);
-	set_pos_half(*b);
-} 
+	while (*a != top_a)
+	{
+		if(top_a->half == ABOVE)
+			ra(a);
+		else
+			rra(a);
+	}
+	while (*b != top_b)
+	{
+		if(top_b->half == ABOVE)
+			rb(b);
+		else
+			rrb(b);
+	}
+}
 
 static void moving (t_stack **a, t_stack **b)
 {
 	t_stack *cheapest;
-	
+
 	cheapest = get_cheapest(*b);
-	// ft_printf("cheapest:%d\n\n\n\n", cheapest->number);
 	if(cheapest->half == ABOVE && cheapest->target->half == ABOVE)
 		rotate_both(a, b, cheapest);
 	else if (cheapest->half == BELOW && cheapest->target->half == BELOW)
 		reverse_rotate_both(a, b, cheapest);
-	finish_rotation(b, cheapest, 'b');
-	finish_rotation(a, cheapest->target, 'a');
+	rotate_until_top(a, b, cheapest->target, cheapest);
 	pa(a, b);
 }
 
 void push_swap(t_stack **a, t_stack **b)
 {
 	int len;
-	t_stack *smallest;
 
+	if(sorted(a))
+		return ;
 	len = ft_stacksize(*a);
-	while (len-- > 3)
-			pb(a, b);
+	while (len -- > 3)
+		pb(a, b);
 	sort_three(a);
 	while (*b)
 	{
-		set_values(*a, *b);
+		set_values(a, b);
 		moving(a, b);
 	}
-	set_pos_half(*a);
-	smallest = find_the_small_one(*a);
-	if(smallest->half == ABOVE)
-		while (*a != smallest)
-			ra(a);
-	else
-		while (*a != smallest)
-			rra(a);
 }

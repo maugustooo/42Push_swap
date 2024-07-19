@@ -53,3 +53,14 @@ int	ft_stacksize(t_stack *stack)
 	}
 	return (i);
 }
+
+t_stack *get_cheapest(t_stack *b)
+{
+	while (b)
+	{
+		if((b->cheapest = TRUE))
+			return(b);
+		b = b->next;
+	}
+	return(NULL);
+}

@@ -38,6 +38,15 @@ int repeat_nbr( t_stack *a, int nbr)
 	return(1);
 }
 
+int exit_free(t_stack **stack)
+{
+	while (*stack)
+	{
+		free(*stack);
+		*stack = (*stack) -> next; 	
+	}
+	free(stack);
+}
 int error()
 {
 	ft_printf("Error\n");

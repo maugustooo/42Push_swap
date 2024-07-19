@@ -30,3 +30,11 @@ void rr(t_stack **a, t_stack **b)
 	rotate(b);
 	ft_printf("rr\n");
 }
+
+void rotate_both(t_stack **a, t_stack **b, t_stack *cheapest)
+{
+	while (*a != cheapest->target && *b != cheapest)
+		rr(a, b);
+	set_pos(*a);
+	set_pos(*b);
+}
