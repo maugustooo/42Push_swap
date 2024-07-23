@@ -1,7 +1,7 @@
 <div align="Center">
 	<h1>42 Push_Swap</h1>
-<p>Because swap_push isn't as natural<br><br><br>
-</p>
+<h3>Because swap_push isn't as natural<br><br><br>
+</h3>
 </div>
 
 > [!IMPORTANT]  
