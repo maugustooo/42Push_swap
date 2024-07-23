@@ -6,7 +6,7 @@
 
 > [!IMPORTANT]  
 > This is just a visualizer to see my algorithm working
-![Screencast from 07-23-2024 03-30-59 PM](https://github.com/user-attachments/assets/7d870e18-7d3e-4955-841c-fe0c242b4708)
+![Screencast from 07-23-2024 03-52-28 PM](https://github.com/user-attachments/assets/f684590c-5e65-4f76-ac0d-fa346cc67097)
 > ><p><a href="https://github.com/o-reo/push_swap_visualizer">The owner of the visualizer</a></p>
 
 ## Introduction
