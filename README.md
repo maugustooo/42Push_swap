@@ -1,7 +1,11 @@
-# Push_swap
+# 42 Push_Swap
+
 Because swap_push isn't as natural
 
-Given a set of integers, sort it using a predefined set of instructions using two stacks. The instruction set is defined below. This program outputs a program in push_swap instructions that sorts the input integers.
+Given a set of integers, sort it using a predefined set of instructions using
+two stacks. The instruction set is defined below. This program outputs a program
+in push_swap instructions that sorts the input integers.
+
 
 > [!IMPORTANT]  
 > This is just a visualizer to see my algorithm working
