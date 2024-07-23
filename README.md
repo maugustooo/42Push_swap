@@ -4,8 +4,7 @@
 	<h2>Because swap_push isn't as natural</h2>
 <p>Given a set of integers, sort it using a predefined set of instructions using
 two stacks. The instruction set is defined below. This program outputs a program
-in push_swap instructions that sorts the input integers.
-
+in push_swap instructions that sorts the input integers.<br><br><br>
 </p>
 </div>
 
