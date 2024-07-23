@@ -6,7 +6,7 @@
 #    By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/17 11:56:43 by maugusto          #+#    #+#              #
-#    Updated: 2024/07/19 14:36:13 by maugusto         ###   ########.fr        #
+#    Updated: 2024/07/23 10:35:03 by maugusto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ fclean: clean
 	@$(RM) $(NAME)
 
 download:
-	@wget https://cdn.intra.42.fr/document/document/25705/checker_linux
+	@wget https://cdn.intra.42.fr/document/document/25705/checker_linux && chmod 777 checker_linux
 
 visualizer:
 	git clone https://github.com/o-reo/push_swap_visualizer.git && \

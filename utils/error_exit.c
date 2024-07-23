@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 14:58:35 by maugusto          #+#    #+#             */
-/*   Updated: 2024/07/19 15:15:37 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/07/23 10:39:05 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@ int	handle_errors(char *argv, long nbr, t_stack **a)
 		return (FALSE);
 	if (repeat_nbr(*a, nbr) == 0)
 		return (FALSE);
-	if (argv[0] != '+' && argv[0] != '-'
-		&& (argv[0] >= '0' && argv[0] <= '9'))
-		result = TRUE;
 	if ((argv[0] == '+' || argv[0] == '-')
 		&& (argv[1] >= '0' && argv[1] <= '9'))
 	{

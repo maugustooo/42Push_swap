@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 14:58:57 by maugusto          #+#    #+#             */
-/*   Updated: 2024/07/19 15:18:56 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/07/23 11:12:27 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,30 @@ static void	sort_three(t_stack **a)
 static int	sorted(t_stack **stack)
 {
 	t_stack	*current;
+	int		flag;
 
+	flag = 1;
 	current = *stack;
 	while (current->next)
 	{
 		if (current->number > current->next->number)
-			return (FALSE);
+		{
+			flag = 0;
+			break ;
+		}
 		current = current->next;
 	}
-	if (ft_stacksize(*stack) == 2)
+	if (ft_stacksize(*stack) == 2 && !flag)
 	{
 		sa(stack);
 		return (TRUE);
 	}
-	else if (ft_stacksize(*stack) == 3)
+	else if (ft_stacksize(*stack) == 3 && !flag)
 	{
 		sort_three(stack);
 		return (TRUE);
 	}
-	return (TRUE);
+	return (flag);
 }
 
 static void	rotate_until_top(t_stack **a, t_stack **b, t_stack *top_a,
