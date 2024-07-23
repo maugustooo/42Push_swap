@@ -1,4 +1,4 @@
-# push_swap
+# Push_swap
 
 > [!IMPORTANT]  
 > This is just a visualizer to see my algorithm working
