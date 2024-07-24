@@ -29,3 +29,7 @@ This project comprises an interesting case study regarding sorting algorithms an
 
 First i push every number from stack A to stack B, until 3 numbers are left in stack A, after that i sort the 3 numbers in stack A.
 Now i will set the positions of the number in stack A and stack B, the positions is where the numbers are in stack, for example(1 2 3) position of 1(the first number) is 0, position of number 2 is 1, etc..., i also set if they are bove or below the half, for example (1 2 3 4), 1 and 2 are above, 3 and 4 are below, and i set the target of every number in stack B.
+
+What is the target?The target number of every number in stack B is the smallest bigger number in stack A, and the number will stay above is respective target in stack A, for example in stack A we have(2 5 6) and in stack B(3), i need to put the number 3 above the number 5(is next number), and will be (2 3 5 6).
+
+
