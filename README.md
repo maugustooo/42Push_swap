@@ -41,4 +41,6 @@ The prices are set. Now, I will identify the cheapest. In push_swap, we need to 
 So, everything that needs to be set is set. Now it's time to push the numbers. First, I'll find the cheapest number (the one I've set as the cheapest). After that, I'll verify: if the cheapest number is above the half and its target is also above, I will rotate both stacks at the same time. This way, I can perform 2 rotations with 1 operation. If both are below the half, I'll perform a reverse rotate on both at the same time. After these two checks, I ensure that the number and its target are at the top of their respective stacks. If not, I will rotate them until they are on top. When both are at the top of their stacks, I push the number to stack A. I then repeat this process: setting the values again, rotating the cheapest, and pushing, until stack B is empty.
 
 With stack B now empty, I will find the smallest number in stack A and rotate it to the top if it's above the half, or reverse rotate it if it's below the half. For example, if the stack is (6 7 9 1 3 4 5), rotating the 1 to the top will result in (1 3 4 5 6 7 9).
+
+
 Now the stack is sorted:) I hope this explanation helps you understand the algorithm.
