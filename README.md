@@ -30,6 +30,13 @@ This project comprises an interesting case study regarding sorting algorithms an
 First i push every number from stack A to stack B, until 3 numbers are left in stack A, after that i sort the 3 numbers in stack A.
 Now i will set the positions of the number in stack A and stack B, the positions is where the numbers are in stack, for example(1 2 3) position of 1(the first number) is 0, position of number 2 is 1, etc..., i also set if they are bove or below the half, for example (1 2 3 4), 1 and 2 are above, 3 and 4 are below, and i set the target of every number in stack B.
 
-What is the target?The target number of every number in stack B is the smallest bigger number in stack A, and the number will stay above is respective target in stack A, for example in stack A we have(2 5 6) and in stack B(3), i need to put the number 3 above the number 5(is next number), and will be (2 3 5 6).
+What is the target?The target number of every number in stack B is the smallest bigger number in stack A, and the number will stay above is respective target in stack A, for example in stack A we have(2 5 6) and in stack B(3), i need to put the number 3 above the number 5(is target), and will be (2 3 5 6).
 
 
+After i set the target, i will set the price.
+So, the price is basically the number of operations that will be needed to push the number from stack B to its respective target in stack A, and the formula to calculate the price is(price = if the number in stack B is above the half(position of the number) if not (length of stack B - position of the number) + if the target in stack A is above the half(position of the target) if not (length of stack A - position of the target).
+
+The price's are set, now i will set the cheapest, in push_swap we need to sor with a limitaded number of operations, so i'm seting the price and found the cheapest to sort with the shortest number of operations possible, so i will search for the number with the less price to push from stack B to stack A and i will set as the cheapest number.
+
+So everything i need to set is seted, now it's time to push the numbers.
+First i will find the cheapest number(the one as i set the cheapest), after that i verify, if the cheapest number is above the half and is target is above to, i will rotate both at the same time, so that way i will do 2 rotations with 1 operation, if both are below the media i will do a reverse rotate to both at the same timem, after that 2 verify i check if the numberis on 
