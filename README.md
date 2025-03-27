@@ -9,10 +9,6 @@
 ![Screencast from 07-23-2024 03-52-28 PM](https://github.com/user-attachments/assets/f684590c-5e65-4f76-ac0d-fa346cc67097)
 > ><p><a href="https://github.com/o-reo/push_swap_visualizer">The owner of the visualizer</a></p>
 
-<div align="center">
-	<h1><a href="https://github.com/maugustooo/So_Long/blob/main/en.subject.pdf">Subject</a></h1>
-</div>
-
 ## Introduction
 
 This project comprises an interesting case study regarding sorting algorithms and its performances, being part of the core curriculum of all 42 schools worldwide. The task is simple: given a sequence of random numbers disposed in a stack data structure (**stack A**), sort them with the help of an empty auxiliary stack (**stack B**) and a set of specific stack operations. The operations allowed are described as follows, as written in our task:
